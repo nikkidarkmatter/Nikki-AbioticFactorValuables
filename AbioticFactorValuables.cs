@@ -18,6 +18,8 @@ namespace AbioticFactorValuables
         public static ConfigEntry<bool> enableSlushieBomb;
         public static ConfigEntry<bool> enableTechScepter;
 
+        public static GameObject freezeExplosionPublic;
+
         private void Awake()
         {
             string pluginFolderPath = Path.GetDirectoryName(Info.Location);
@@ -65,6 +67,7 @@ namespace AbioticFactorValuables
                 Items.RegisterItem(slushiebombitem);
                 GameObject freezeexplosion = assetBundle.LoadAsset<GameObject>("Freeze Explosion");
                 NetworkPrefabs.RegisterNetworkPrefab(freezeexplosion);
+                freezeExplosionPublic = freezeexplosion;
             }
             if (enableTechScepter.Value)
             {

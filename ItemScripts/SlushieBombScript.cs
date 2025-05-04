@@ -39,6 +39,8 @@ namespace AbioticFactorValuables.ItemScripts
 
         public GameObject throwLine;
 
+        private GameObject obj;
+
         private Rigidbody rb;
 
         private TrailRenderer throwLineTrail;
@@ -126,7 +128,14 @@ namespace AbioticFactorValuables.ItemScripts
                 return;
             }
             bombExplosion.Play(base.transform.position);
-            GameObject obj = PhotonNetwork.Instantiate("Freeze Explosion", base.transform.position, base.transform.rotation);
+            if (SemiFunc.IsMultiplayer())
+            {
+                obj = PhotonNetwork.Instantiate("Freeze Explosion", base.transform.position, base.transform.rotation);
+            }
+            else
+            {
+                obj = Instantiate(AbioticFactorValuables.freezeExplosionPublic, base.transform.position, base.transform.rotation, null);
+            }
             obj.transform.parent = null;
             obj.SetActive(true);
             physGrabObjectImpactDetector.DestroyObject(obj);
