@@ -1,6 +1,6 @@
 # Abiotic Factor Valuables
 
-**A mod that adds 5 shop items and 35 random valuables from the game Abiotic Factor!** <br>
+**A mod that adds 5 shop items and 35 random valuables from the game Abiotic Factor! Now updated to REPO v0.3.0! Please report any bugs caused by the new version.** <br>
 
 Due to the similar pixelated art styles between Abiotic Factor and R.E.P.O., these items and valuables should fit right in aesthetically! <br>
 
@@ -25,44 +25,44 @@ I've spent way more time modding games than I ever thought I would. If you'd lik
 ## Valuables
 
 **McJannek Station:**
-- *[NEW]* Anteverse Gem *(can also spawn in Swiftbroom Academy)*
-- *[NEW]* Box of Screws *(can also spawn in Headman Manor)*
+- Anteverse Gem *(can also spawn in Swiftbroom Academy and Museum of Human Art)*
+- Box of Screws *(can also spawn in Headman Manor)*
 - Briefcase *(can also spawn in Headman Manor)*
 - Desk Phone
 - GATE Security Crate
 - Snacks Vending Machine *(functional!)*
-- *[NEW]* Tesla Coil *(functional!)*
+- Tesla Coil *(functional!)*
 - TV Forklift Certification *(functional!)*
-- Unfortunate Spacemen Arcade Machine *(functional!)*
-- Water Cooler
+- Unfortunate Spacemen Arcade Machine *(can also spawn in Museum of Human Art, functional!)*
+- Water Cooler *(can also spawn in Museum of Human Art)*
 
 **Headman Manor:**
 - Can of Peas *(can also spawn in McJannek Station)*
-- Creepy Pumpkin Painting *(can also spawn in Swiftbroom Academy)*
-- *[NEW]* Desk Leg *(can also spawn in McJannek Station, functional!)*
+- Creepy Pumpkin Painting *(can also spawn in Swiftbroom Academy and Museum of Human Art)*
+- Desk Leg *(can also spawn in McJannek Station, functional!)*
 - Diamond Pest Statue
 - Dog Photo Frame *(can also spawn in McJannek Station)*
-- *[NEW]* Human Brain *(can also spawn in Swiftbroom Academy)*
+- Human Brain *(can also spawn in Swiftbroom Academy and Museum of Human Art)*
 - Lodestone *(can also spawn in Swiftbroom Academy)*
-- The Red Chair
+- The Red Chair *(can also spawn in Museum of Human Art)*
 - TV Channel 5 *(functional!)*
 
 **Swiftbroom Academy:**
 - Antelight
-- Armor Stand
+- Armor Stand *(can also spawn in Museum of Human Art)*
 - Corn Husk Doll *(can also spawn in Headman Manor)*
 - Crystalline Vial
-- *[NEW]* Fog Lantern
-- Glow Tulip
-- *[NEW]* Greyeb *(functional!)*
+- Fog Lantern *(can also spawn in Museum of Human Art)*
+- Glow Tulip *(can also spawn in Museum of Human Art)*
+- Greyeb *(can also spawn in Museum of Human Art, functional!)*
 - Pitchfork *(can also spawn in Headman Manor)*
-- *[NEW]* Reservoir Growth *(can also spawn in McJannek Station)*
+- Reservoir Growth *(can also spawn in McJannek Station)*
 
 **All Maps:**
 - Anvil
 - Gravity Cube *(functional!)*
 - Nachos
-- *[NEW]* Rubber Band Ball *(functional!)*
+- Rubber Band Ball *(functional!)*
 - Saltz
 - Slushie
 - Unassuming Bell *(functional!)*
@@ -77,5 +77,7 @@ I've spent way more time modding games than I ever thought I would. If you'd lik
 *Note that pictures do not feature items from v1.1.0.* <br>
 
 ## Credits
+
+All assets come from **Abiotic Factor**, please go support the devs! Shoutout to **Magic_Wesley**, **s1ckboy**, **JacobG5** and **Xu Xiaolan** for help with code and testing. Shoutout to **CritHaxXoG/Zehs** for creating REPOLib and answering questions for me! This project would likely have been abandoned without y'all. <3
 
 All assets come from **Abiotic Factor**, please go support the devs! Shoutout to **Magic_Wesley**, **s1ckboy**, **JacobG5** and **Xu Xiaolan** for help with code and testing. Shoutout to **CritHaxXoG/Zehs** for creating REPOLib and answering questions for me! This project would likely have been abandoned without y'all. <3
