@@ -88,7 +88,7 @@ namespace AbioticFactorValuables.ItemScripts
                     SemiFunc.PlayerEyesOverride(targetPlayer, greyebEye.transform.position, 0.1f, base.gameObject);
                     if (targetPlayer.isLocal)
                     {
-                        Vector3 vector = targetPlayer.localCameraPosition - greyebEye.transform.position;
+                        Vector3 vector = targetPlayer.localCamera.clientPosition - greyebEye.transform.position;
                         float num = Vector3.Dot(Vector3.down, vector);
                         float strengthNoAim = 10f;
                         if (num > 0.9f)

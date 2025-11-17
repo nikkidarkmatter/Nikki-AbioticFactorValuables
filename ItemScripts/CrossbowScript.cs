@@ -338,32 +338,21 @@ public class ItemCrossbow : MonoBehaviour
     }
 
     [PunRPC]
-    public void ShootBoltRPC(Vector3 _endPosition, bool _hit)
+    public void ShootBoltRPC(Vector3 _endPosition, bool _hit, PhotonMessageInfo _info = default(PhotonMessageInfo))
     {
-        crossbowAnim.SetBool("shoot", true);
-        if (itemBattery.batteryLife <= 0f || batteryDrainFullBars <= 0)
+        if (SemiFunc.MasterOnlyRPC(_info))
         {
-            crossbowAnim.SetBool("outofammo", true);
-        }
-        else
-        {
-            crossbowAnim.SetBool("outofammo", false);
-            crossbowAnim.SetBool("shoot", false);
-            soundReload.Play(gunMuzzle.position);
-        }
-        if (physGrabObject.playerGrabbing.Count > 1)
-        {
-            foreach (PhysGrabber item in physGrabObject.playerGrabbing)
+            if (physGrabObject.playerGrabbing.Count > 1 && physGrabObject.grabbedLocal)
             {
-                item.OverrideGrabRelease();
+                PlayerAvatar.instance.physGrabber.OverrideGrabRelease(photonView.ViewID);
             }
+            ItemGunBullet component = Object.Instantiate(boltPrefab, gunMuzzle.position, gunMuzzle.rotation).GetComponent<ItemGunBullet>();
+            component.hitPosition = _endPosition;
+            component.bulletHit = _hit;
+            soundHit.Play(_endPosition);
+            component.shootLineWidthCurve = shootLineWidthCurve;
+            component.ActivateAll();
         }
-        ItemGunBullet component = Object.Instantiate(boltPrefab, gunMuzzle.position, gunMuzzle.rotation).GetComponent<ItemGunBullet>();
-        component.hitPosition = _endPosition;
-        component.bulletHit = _hit;
-        soundHit.Play(_endPosition);
-        component.shootLineWidthCurve = shootLineWidthCurve;
-        component.ActivateAll();      
     }
 
     [PunRPC]

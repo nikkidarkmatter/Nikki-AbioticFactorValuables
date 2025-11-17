@@ -49,17 +49,13 @@ namespace AbioticFactorValuables.ItemScripts
         {
             Vector3 spawnPos = spawnPosTransform.position;
             {
-                if (SemiFunc.IsMultiplayer())
+                if (SemiFunc.IsMultiplayer() && SemiFunc.IsMasterClient())
                 {
-                    string valuablePath = ResourcesHelper.GetValuablePrefabPath(saltzItem);
-
-                    if (valuablePath == string.Empty)
-                    {
-                        print("Failed to spawn Saltz.");
-                        return;
-                    }
-                    print($"Network spawning \"{valuablePath}\" at {spawnPos}.");
-                    PhotonNetwork.InstantiateRoomObject(valuablePath, spawnPos, Quaternion.identity);
+                    Valuables.SpawnValuable(AbioticFactorValuables.saltzItemRef, spawnPos, Quaternion.identity);
+                }
+                else if (SemiFunc.IsNotMasterClient())
+                {
+                    // Do nothing here.
                 }
                 else
                 {

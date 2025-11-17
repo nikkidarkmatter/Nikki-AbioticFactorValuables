@@ -4,6 +4,7 @@ using UnityEngine;
 using REPOLib.Modules;
 using System.Collections.Generic;
 using BepInEx.Configuration;
+using REPOLib.Objects.Sdk;
 
 namespace AbioticFactorValuables
 {
@@ -19,6 +20,8 @@ namespace AbioticFactorValuables
         public static ConfigEntry<bool> enableTechScepter;
 
         public static GameObject freezeExplosionPublic;
+
+        public static PrefabRef saltzItemRef;
 
         private void Awake()
         {
@@ -36,34 +39,32 @@ namespace AbioticFactorValuables
 
             // Valuable strings
 
-            List<string> arctic = ["Valuables - Arctic"];
-            List<string> manor = ["Valuables - Manor"];
-            List<string> wizard = ["Valuables - Wizard"];
+            string arctic = "Valuables - Arctic";
+            string manor = "Valuables - Manor";
+            string wizard = "Valuables - Wizard";
+            string museum = "Valuables - Museum";
             List<string> generic = ["Valuables - Generic"];
-            List<string> noarctic = ["Valuables - Manor", "Valuables - Wizard"];
-            List<string> nomanor = ["Valuables - Arctic", "Valuables - Wizard"];
-            List<string> nowizard = ["Valuables - Arctic", "Valuables - Manor"];
 
             // Shop items
 
             if (enableCrowbar.Value)
             {
-                Item crowbaritem = assetBundle.LoadAsset<Item>("Item Melee Crowbar");
+                ItemContent crowbaritem = assetBundle.LoadAsset<ItemContent>("Item Melee Crowbar");
                 Items.RegisterItem(crowbaritem);
             }
             if (enableEnergyPistol.Value)
             {
-                Item energypistolitem = assetBundle.LoadAsset<Item>("Item Gun Energy Pistol");
+                ItemContent energypistolitem = assetBundle.LoadAsset<ItemContent>("Item Gun Energy Pistol");
                 Items.RegisterItem(energypistolitem);
             }
             if (enableLodestoneCrossbow.Value)
             {
-                Item lodestonecrossbowitem = assetBundle.LoadAsset<Item>("Item Crossbow Lodestone");
+                ItemContent lodestonecrossbowitem = assetBundle.LoadAsset<ItemContent>("Item Crossbow Lodestone");
                 Items.RegisterItem(lodestonecrossbowitem);
             }
             if (enableSlushieBomb.Value)
             {
-                Item slushiebombitem = assetBundle.LoadAsset<Item>("Item Slushie Bomb");
+                ItemContent slushiebombitem = assetBundle.LoadAsset<ItemContent>("Item Slushie Bomb");
                 Items.RegisterItem(slushiebombitem);
                 GameObject freezeexplosion = assetBundle.LoadAsset<GameObject>("Freeze Explosion");
                 NetworkPrefabs.RegisterNetworkPrefab(freezeexplosion);
@@ -71,7 +72,7 @@ namespace AbioticFactorValuables
             }
             if (enableTechScepter.Value)
             {
-                Item techscepteritem = assetBundle.LoadAsset<Item>("Item Melee Tech Scepter");
+                ItemContent techscepteritem = assetBundle.LoadAsset<ItemContent>("Item Melee Tech Scepter");
                 Items.RegisterItem(techscepteritem);
             }
 
@@ -87,16 +88,16 @@ namespace AbioticFactorValuables
             GameObject vendingmachineitem = assetBundle.LoadAsset<GameObject>("Valuable Snacks Vending Machine");
             GameObject watercooleritem = assetBundle.LoadAsset<GameObject>("Valuable Water Cooler");
 
-            Valuables.RegisterValuable(anteversegemitem, nomanor);
-            Valuables.RegisterValuable(boxofscrewsitem, nowizard);
-            Valuables.RegisterValuable(briefcaseitem, nowizard);
-            Valuables.RegisterValuable(deskphoneitem, arctic);
-            Valuables.RegisterValuable(gatesecuritycrateitem, arctic);
-            Valuables.RegisterValuable(teslacoilitem, arctic);
-            Valuables.RegisterValuable(tvforkliftitem, arctic);
-            Valuables.RegisterValuable(ufsarcademachineitem, arctic);
-            Valuables.RegisterValuable(vendingmachineitem, arctic);
-            Valuables.RegisterValuable(watercooleritem, arctic);
+            Valuables.RegisterValuable(anteversegemitem, [arctic, wizard, museum]);
+            Valuables.RegisterValuable(boxofscrewsitem, [arctic, manor]);
+            Valuables.RegisterValuable(briefcaseitem, [arctic, manor]);
+            Valuables.RegisterValuable(deskphoneitem, [arctic]);
+            Valuables.RegisterValuable(gatesecuritycrateitem, [arctic]);
+            Valuables.RegisterValuable(teslacoilitem, [arctic]);
+            Valuables.RegisterValuable(tvforkliftitem, [arctic]);
+            Valuables.RegisterValuable(ufsarcademachineitem, [arctic]);
+            Valuables.RegisterValuable(vendingmachineitem, [arctic, museum]);
+            Valuables.RegisterValuable(watercooleritem, [arctic, museum]);
 
             // Headman Manor valuables
             GameObject cannedpeasitem = assetBundle.LoadAsset<GameObject>("Valuable Can of Peas");
@@ -109,18 +110,17 @@ namespace AbioticFactorValuables
             GameObject redchairitem = assetBundle.LoadAsset<GameObject>("Valuable The Red Chair");
             GameObject tvchannel5item = assetBundle.LoadAsset<GameObject>("Valuable TV Channel 5");
 
-            Valuables.RegisterValuable(cannedpeasitem, nowizard);
-            Valuables.RegisterValuable(creepypaintingitem, noarctic);
-            Valuables.RegisterValuable(desklegitem, nowizard);
-            Valuables.RegisterValuable(diamondpestitem, manor);
-            Valuables.RegisterValuable(dogphotoitem, nowizard);
-            Valuables.RegisterValuable(brainitem, noarctic);
-            Valuables.RegisterValuable(lodestoneitem, noarctic);
-            Valuables.RegisterValuable(redchairitem, manor);
-            Valuables.RegisterValuable(tvchannel5item, manor);
+            Valuables.RegisterValuable(cannedpeasitem, [arctic, manor]);
+            Valuables.RegisterValuable(creepypaintingitem, [manor, wizard, museum]);
+            Valuables.RegisterValuable(desklegitem, [arctic, manor]);
+            Valuables.RegisterValuable(diamondpestitem, [manor]);
+            Valuables.RegisterValuable(dogphotoitem, [arctic, manor]);
+            Valuables.RegisterValuable(brainitem, [manor, wizard, museum]);
+            Valuables.RegisterValuable(lodestoneitem, [manor, wizard]);
+            Valuables.RegisterValuable(redchairitem, [manor, museum]);
+            Valuables.RegisterValuable(tvchannel5item, [manor]);
 
             // Swiftbroom Academy valuables
-
             GameObject antelightitem = assetBundle.LoadAsset<GameObject>("Valuable Antelight");
             GameObject armorstanditem = assetBundle.LoadAsset<GameObject>("Valuable Armor Stand");
             GameObject cornhuskdollitem = assetBundle.LoadAsset<GameObject>("Valuable Corn Husk Doll");
@@ -131,15 +131,15 @@ namespace AbioticFactorValuables
             GameObject pitchforkitem = assetBundle.LoadAsset<GameObject>("Valuable Pitchfork");
             GameObject reservoirgrowthitem = assetBundle.LoadAsset<GameObject>("Valuable Reservoir Growth");
 
-            Valuables.RegisterValuable(antelightitem, wizard);
-            Valuables.RegisterValuable(armorstanditem, wizard);
-            Valuables.RegisterValuable(cornhuskdollitem, noarctic);
-            Valuables.RegisterValuable(crystallinevialitem, wizard);
-            Valuables.RegisterValuable(foglanternitem, wizard);
-            Valuables.RegisterValuable(glowtulipitem, wizard);
-            Valuables.RegisterValuable(greyebitem, wizard);
-            Valuables.RegisterValuable(pitchforkitem, noarctic);
-            Valuables.RegisterValuable(reservoirgrowthitem, nomanor);
+            Valuables.RegisterValuable(antelightitem, [wizard]);
+            Valuables.RegisterValuable(armorstanditem, [wizard, museum]);
+            Valuables.RegisterValuable(cornhuskdollitem, [manor, wizard]);
+            Valuables.RegisterValuable(crystallinevialitem, [wizard]);
+            Valuables.RegisterValuable(foglanternitem, [wizard, museum]);
+            Valuables.RegisterValuable(glowtulipitem, [wizard, museum]);
+            Valuables.RegisterValuable(greyebitem, [wizard, museum]);
+            Valuables.RegisterValuable(pitchforkitem, [manor, wizard]);
+            Valuables.RegisterValuable(reservoirgrowthitem, [arctic, wizard]);
 
             // Global valuables
             GameObject anvilitem = assetBundle.LoadAsset<GameObject>("Valuable Anvil");
@@ -155,8 +155,9 @@ namespace AbioticFactorValuables
             Valuables.RegisterValuable(gravitycubeitem, generic);
             Valuables.RegisterValuable(nachositem, generic);
             Valuables.RegisterValuable(rubberbandballitem, generic);
-            Valuables.RegisterValuable(saltzitem, generic);
             Valuables.RegisterValuable(slushieitem, generic);
+
+            saltzItemRef = Valuables.RegisterValuable(saltzitem, generic);
         }
     }
 }
